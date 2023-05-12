@@ -1,0 +1,23 @@
+{% extends 'core/base.html' %}
+
+{% block title %}{{ plant.name }}{% endblock %}
+
+{% block content %}
+<div class="grid grid-cols-5 gap-6">
+    <div class="col-span-3">
+        <img src="{{ plant.image.url }}" class="rounded-xl">
+    </div>
+
+    <div class="col-span-2 p-6 bg-gray-100 rounded-xl">
+        <h1 class="mb-6 text-3xl">{{ plant.name}}</h1>
+        <p class="text-gray-500"><strong>Vlažnost tla: </strong>{{ plant.humidity }}</p>
+        <p class="text-gray-500"><strong>Svjetlina: </strong>{{ plant.brightness }}</p>
+        <p class="text-gray-500"><strong>Temperatura: </strong>{{ plant.temperature }}</p>
+        <p class="text-gray-500"><strong>Gnojivo: </strong>{{ plant.substrate }}</p>
+        <div class="mt-6 p-6 pb-white rounded-xl">
+            <a href= "{% url 'plant:edit' plant.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl">Ažuriraj</a>
+            <a href= "{% url 'plant:delete' plant.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-red-500 text-white rounded-xl">Obriši</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

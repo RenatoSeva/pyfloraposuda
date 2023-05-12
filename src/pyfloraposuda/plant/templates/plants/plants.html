@@ -1,0 +1,60 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Biljke{% endblock %}
+
+{% block content %}
+    <div class="pb-6 grid grid-cols-4 gap-4 bg-gray-100">
+        <div class="col-span-3">
+            <div class="grid grid-cols-3 gap-3">
+                {% for plant in plants %}
+                    <div>
+                        <a href="{% url 'plant:detail' plant.id %}">
+                            <column>
+                                <div>
+                                    <img src="{{ plant.image.url }}" class="rounded-t-xl">
+                                </div>
+                            </column>
+                            <column>
+                                <div class="p-6 bg-white rounded-b-xl">
+                                    <h2 class="text-2xl">Ime: {{ plant.name }}</h2>
+                                    <p class="text-2xl">Vlažnost tla: {{ plant.humidity }}</p>
+                                    <p class="text-2xl">Svjetlina: {{ plant.brightness }}</p>
+                                    <p class="text-2xl">Temperatura: {{ plant.temperature }}</p>
+                                    <p class="text-2xl">Gnojivo: {{ plant.substrate }}</p>
+                                </div>
+                            </column>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <a href="{% url 'plant:new'%}" class="px-6 py-3 text-lg font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700">Nova biljka</a>
+    </div>
+{% endblock %}
+
+
+{% comment %} {% extends 'core/base.html' %}
+
+{% block title %}Biljke{% endblock %}
+
+{% block content %}
+    <div class="pb-6 grid grid-cols-4 gap-4 bg-gray-100">
+        <div class="col-span-3">
+            <div class="grid grid-cols-3 gap-3">
+                {% for plant in plants %}
+                    <div>
+                        <a href="#">
+                            <div>
+                                <img src="{{ plant.image.url }}" class="rounded-t-xl" style="width:300px;height:300px;">
+                            </div>
+    
+                            <div class="p-6 bg-white rounded-b-xl">
+                                <h2 class="text-2xl">{{ plant.name }}</h2>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %} {% endcomment %}
