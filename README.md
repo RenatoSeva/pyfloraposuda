@@ -7,6 +7,7 @@
 user za ulazak u aplikaciju je:
 
 username: admin
+
 password: admin
 
  aplikacija se nalazi na localhost:8000
