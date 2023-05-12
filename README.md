@@ -1,6 +1,7 @@
 # PyfloraPosuda
 
  docker build -t pyfolraposuda:latest .
+ 
  docker run -p 8000:8000 pyfloraposuda:latest
 
 user za ulazak u aplikaciju je:
