@@ -1,0 +1,32 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Biljke{% endblock %}
+
+{% block content %}
+    <a href="#" class="px-6 py-3 text-lg font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700">SYNC</a>
+
+    <div class="pb-6 grid grid-cols-4 gap-4 bg-gray-100">
+        <div class="col-span-3">
+            <div class="grid grid-cols-3 gap-3">
+                {% for pot in pots %}
+                    <div>
+                        <a href="{% url 'pot:detail' pot.id %}">
+                            <column>
+                                <div>
+                                    <img src="{{ pot.plant.image.url }}" class="rounded-t-xl">
+                                </div>
+                            </column>
+                            <column>
+                                <div class="p-6 bg-white rounded-b-xl">
+                                    <h2 class="text-2xl">Ime: {{ pot.name }}</h2>
+                                    <p class="text-2xl">Status: {{ pot.status }}</p>
+                                </div>
+                            </column>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <a href="{% url 'pot:new'%}" class="px-6 py-3 text-lg font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700">Nova posuda</a>
+    </div>
+{% endblock %}
