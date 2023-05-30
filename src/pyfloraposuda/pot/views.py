@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 
-from .models import Pot, Senzors
+from .models import Pot, Senzors, SenzorValues
 from .forms import NewPotForm, EditPotForm
 
 # Create your views here.
@@ -83,9 +83,18 @@ def detail(request, pk):
         render: vraća detail.html
     """
     pot = get_object_or_404(Pot, pk=pk)
+    senzorvaluestpm = SenzorValues.objects.filter(senzor_id=pot.senzorTmp.id)
+    senzorvaluesph = SenzorValues.objects.filter(senzor_id=pot.senzorPh.id)
+    senzorvaluesbrightness = SenzorValues.objects.filter(senzor_id=pot.senzorBrightness.id)
+    senzorvalueshumidity = SenzorValues.objects.filter(senzor_id=pot.senzorHumidity.id)
+    #senzorvalues = SenzorValues.objects.all()
 
     return render(request, 'pots/detail.html', {
         'pot': pot,
+        'senzorvaluestpm' : senzorvaluestpm,
+        'senzorvaluesph'  : senzorvaluesph,
+        'senzorvaluesbrightness' : senzorvaluesbrightness,
+        'senzorvalueshumidity' : senzorvalueshumidity,
     })
 
 @login_required

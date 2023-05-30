@@ -4,3 +4,4 @@ Pillow==9.5.0
 sqlparse==0.4.4
 tzdata==2023.3
 pandas==2.0.1
+matplotlib-inline==0.1.6

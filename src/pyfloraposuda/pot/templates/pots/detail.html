@@ -19,5 +19,104 @@
             <a href= "{% url 'pot:delete' pot.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-red-500 text-white rounded-xl">Obriši</a>
         </div>
     </div>
+    <div class "col-md-8">
+        <canvas id="barChart"></canvas>
+    </div>
+
+    <div class "col-md-8">
+        <canvas id="lineChart"></canvas>
+    </div>
+
+    <div class "col-md-8">
+        <canvas id="pyChart"></canvas>
+    </div>
+
+    <div class "col-md-8">
+        <canvas id="bubbleChart"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>      
+    <script>
+    //setup
+    const data = {
+        labels: [{% for value in senzorvaluestpm %} '{{value.date}}', {% endfor %}],
+        datasets: [{
+          label: '# of Votes',
+          data: [],
+          borderWidth: 1
+        }]
+    };
+
+    //config
+
+    const config = {
+        type: 'bar',
+        data,
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+    }
+
+    //render init block
+    const barChart = new Chart(
+        document.getElementById('barChart'),
+        config
+    );
+
+    const config2 = {
+        type: 'line',
+        data,
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+    }
+
+    const lineChart = new Chart(
+        document.getElementById('lineChart'),
+        config2
+    );
+
+    const config3 = {
+        type: 'polarArea',
+        data,
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+    }
+    const pyChart = new Chart(
+        document.getElementById('pyChart'),
+        config3
+    );
+
+    const config4 = {
+        type: 'bubble',
+        data,
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+    }
+    const bubbleChart = new Chart(
+        document.getElementById('bubbleChart'),
+        config4
+    );
+    </script>
+    </script>
+    
 </div>
 {% endblock %}
