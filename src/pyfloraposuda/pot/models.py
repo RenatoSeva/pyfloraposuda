@@ -32,9 +32,6 @@ class Pot(models.Model):
 
     Args:
         models (django base model): model podataka koji prikazuje pojedinu posudu sa stranim kljucevima na tablicu Plant, User i Senzors
-
-    Returns:
-        str: vraca ime posude
     """
     name = models.CharField(max_length=255)
     plant = models.ForeignKey(Plant, related_name='potsPlant', on_delete=models.PROTECT, null=True, blank=True)
