@@ -8,6 +8,14 @@ from .forms import NewPotForm, EditPotForm
 # Create your views here.
 
 def pots(request):
+    """funkcija za prikazivanje posuda koje je kreirao user
+
+    Args:
+        request (HttpRequest): http zahtjev s parametrima za ispis posuda
+
+    Returns:
+        render: vraca pots.html
+    """
     pots = Pot.objects.filter(user=request.user)
 
     return render(request, 'pots/pots.html',{
@@ -18,6 +26,14 @@ def pots(request):
 
 @login_required
 def new(request):
+    """funkcija za kreiranje nove posude
+
+    Args:
+        request (HttpRequest): http zahtjev s parametrima za kreiranje nove posude
+
+    Returns:
+        render: vraća form.html
+    """
     if request.method == 'POST':
         form = NewPotForm(request.POST, request.FILES)
 
@@ -57,6 +73,15 @@ def new(request):
     })
 
 def detail(request, pk):
+    """funkcija za ispisivanje detalja posude
+
+    Args:
+        request (HttoRequest): http zahtjev s parametrima za ispisivanje detalja posude
+        pk (primaryKey): Primarni ključ tablice Pot
+
+    Returns:
+        render: vraća detail.html
+    """
     pot = get_object_or_404(Pot, pk=pk)
 
     return render(request, 'pots/detail.html', {
@@ -64,7 +89,15 @@ def detail(request, pk):
     })
 
 @login_required
-def delete(request, pk):
+def delete(pk):
+    """funkcija za brisanje posude iz tablice Pot
+
+    Args:
+        pk (primaryKey): Primarni ključ tablice Pot
+
+    Returns:
+        redirect: pots.html
+    """
     pot = get_object_or_404(Pot, pk=pk)
     pot.delete()
 
@@ -73,6 +106,15 @@ def delete(request, pk):
 
 @login_required
 def edit(request, pk):
+    """Funkcija za uređivanje posuda
+
+    Args:
+        request (HttpRequest): http zahtjev s parametrima za uređivanje posude
+        pk (primaryKey): primarni ključ na tablicu Pot
+
+    Returns:
+        render: vraća form.html
+    """
     pot = get_object_or_404(Pot, pk=pk)
 
     if request.method == 'POST':
@@ -88,5 +130,5 @@ def edit(request, pk):
     return render(request, 'pots/form.html', {
         'form': form,
         'title': 'Ažuriranje podataka',
-        'komanda': 'Ažuriraj',
+        'command': 'Ažuriraj',
     })

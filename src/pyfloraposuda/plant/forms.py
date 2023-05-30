@@ -4,6 +4,11 @@ from .models import Plant
 INPUT_CLASSES ='w-full py-4 px-6 rounded-xl border'
 
 class EditPlantForm(forms.ModelForm):
+    """clasa za uređivanje biljke
+
+    Args:
+        forms (django model): clasa za uređivanje biljke
+    """
     class Meta:
         model = Plant
         fields = {'name', 'image', 'humidity', 'brightness', 'temperature', 'substrate'}
@@ -30,6 +35,11 @@ class EditPlantForm(forms.ModelForm):
         }
 
 class NewPlantForm(forms.ModelForm):
+    """clasa za kreiranje nove biljke
+
+    Args:
+        forms (django model): clasa za kreiranje nove biljke
+    """
     class Meta:
         model = Plant
         fields = {'name', 'image', 'humidity', 'brightness', 'temperature', 'substrate'}

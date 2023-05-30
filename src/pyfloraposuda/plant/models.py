@@ -2,6 +2,14 @@ from django.db import models
 
 # Create your models here.
 class Plant(models.Model):
+    """model podataka koji prikazuje pojedinu biljku
+
+    Args:
+        models (django base model): model podataka koji prikazuje pojedinu biljku
+
+    Returns:
+        str: vraca ime biljke
+    """
     name = models.CharField(max_length=255)
     image = models.ImageField(upload_to='plant_images', blank=True, null=True)
     humidity = models.CharField(max_length=255)

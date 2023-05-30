@@ -8,6 +8,14 @@ from .forms import EditPlantForm, NewPlantForm
 # Create your views here.
 
 def plants(request):
+    """funkcija za prikazivanje biljaka koje je kreirao user
+
+    Args:
+        request (HttpRequest): http zahtjev s parametrima za ispis biljaka
+
+    Returns:
+        render: vraca plants.html
+    """
     plants = Plant.objects.all()
 
     return render(request, 'plants/plants.html',{
@@ -15,6 +23,15 @@ def plants(request):
     })
 
 def detail(request, pk):
+    """funkcija za ispisivanje detalja biljke
+
+    Args:
+        request (HttoRequest): http zahtjev s parametrima za ispisivanje detalja biljke
+        pk (primaryKey): Primarni ključ tablice Plant
+
+    Returns:
+        render: vraća detail.html
+    """
     plant = get_object_or_404(Plant, pk=pk)
 
     return render(request, 'plants/detail.html', {
@@ -22,7 +39,15 @@ def detail(request, pk):
     })
 
 @login_required
-def delete(request, pk):
+def delete(pk):
+    """funkcija za brisanje biljke iz tablice Plants
+
+    Args:
+        pk (primaryKey): Primarni ključ tablice Plants
+
+    Returns:
+        redirect: plants.html
+    """
     plant = get_object_or_404(Plant, pk=pk)
     plant.delete()
 
@@ -31,6 +56,15 @@ def delete(request, pk):
 
 @login_required
 def edit(request, pk):
+    """Funkcija za uređivanje biljaka
+
+    Args:
+        request (HttpRequest): http zahtjev s parametrima za uređivanje biljke
+        pk (primaryKey): primarni ključ na tablicu Plants
+
+    Returns:
+        render: vraća form.html
+    """
     plant = get_object_or_404(Plant, pk=pk)
 
     if request.method == 'POST':
@@ -51,6 +85,14 @@ def edit(request, pk):
 
 @login_required
 def new(request):
+    """funkcija za kreiranje nove posude
+
+    Args:
+        request (HttpRequest): http zahtjev s parametrima za kreiranje nove biljke
+
+    Returns:
+        render: vraća form.html
+    """
     if request.method == 'POST':
         form = NewPlantForm(request.POST, request.FILES)
 
