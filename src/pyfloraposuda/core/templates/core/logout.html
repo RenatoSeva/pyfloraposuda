@@ -1,0 +1,9 @@
+{% extends 'core/base.html' %}
+{% block content %}
+    <h2> You have been logged out</h2>
+    <div class="border-top-pt3" style="min-height:65vh;">
+        <small class="text-muted">
+            <a href="{% url 'core:login' %}"> Login in</a>
+        </small>
+    </div>
+{% endblock %}

@@ -69,7 +69,7 @@ def new(request):
     return render(request, 'pots/form.html', {
         'form': form,
         'title': 'Nova posuda',
-        'komanda': 'Spremi',
+        'command': 'Spremi',
     })
 
 def detail(request, pk):

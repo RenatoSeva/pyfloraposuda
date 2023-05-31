@@ -10,10 +10,10 @@
 
     <div class="col-span-2 p-6 bg-gray-100 rounded-xl">
         <h1 class="mb-6 text-3xl">{{ pot.name}}</h1>
-        <p class="text-gray-500"><strong>Vrijednost senzora temperature: </strong>{{ pot.senzorTmp.currentValue }}{{ pot.senzorTmp.date }}</p>
-        <p class="text-gray-500"><strong>Vrijednost senzora svjetline: </strong>{{ pot.senzorBrightness.currentValue }}{{ pot.senzorBrightness.date }}</p>
-        <p class="text-gray-500"><strong>Vrijednost senzora ph: </strong>{{ pot.senzorPh.currentValue }}{{ pot.senzorPh.date }}</p>
-        <p class="text-gray-500"><strong>Vrijednost senzora vlažnosti zraka: </strong>{{ pot.senzorHumidity.currentValue }}{{ pot.senzorHumidity.date }}</p>
+        <p class="text-gray-500"><strong>Vrijednost senzora temperature: </strong>{{ pot.senzorTmp.currentValue }}, {{ pot.senzorTmp.date }}</p>
+        <p class="text-gray-500"><strong>Vrijednost senzora svjetline: </strong>{{ pot.senzorBrightness.currentValue }}, {{ pot.senzorBrightness.date }}</p>
+        <p class="text-gray-500"><strong>Vrijednost senzora ph: </strong>{{ pot.senzorPh.currentValue }}, {{ pot.senzorPh.date }}</p>
+        <p class="text-gray-500"><strong>Vrijednost senzora vlažnosti zraka: </strong>{{ pot.senzorHumidity.currentValue }}, {{ pot.senzorHumidity.date }}</p>
         <div class="mt-6 p-6 pb-white rounded-xl">
             <a href= "{% url 'pot:edit' pot.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl">Ažuriraj</a>
             <a href= "{% url 'pot:delete' pot.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-red-500 text-white rounded-xl">Obriši</a>
@@ -38,20 +38,45 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>      
     <script>
     //setup
-    const data = {
+    const datatmp = {
         labels: [{% for value in senzorvaluestpm %} '{{value.date}}', {% endfor %}],
         datasets: [{
-          label: '# of Votes',
-          data: [],
+          label: 'Temperatura',
+          data: [{% for data in senzorvaluestpm%} {{data.value}}, {% endfor%}],
           borderWidth: 1
         }]
     };
 
+    const dataph = {
+      labels: [{% for value in senzorvaluesph %} '{{value.date}}', {% endfor %}],
+      datasets: [{
+        label: 'Ph tla',
+        data: [{% for data in senzorvaluesph%} {{data.value}}, {% endfor%}],
+        borderWidth: 1
+      }]
+  };
+
+  const databrightness = {
+    labels: [{% for value in senzorvaluesbrightness %} '{{value.date}}', {% endfor %}],
+    datasets: [{
+      label: 'Svjetlna',
+      data: [{% for data in senzorvaluesbrightness%} {{data.value}}, {% endfor%}],
+      borderWidth: 1
+    }]
+  };
+  const datahumidity = {
+    labels: [{% for value in senzorvalueshumidity %} '{{value.date}}', {% endfor %}],
+    datasets: [{
+      label: 'Vlažnost tla',
+      data: [{% for data in senzorvalueshumidity%} {{data.value}}, {% endfor%}],
+      borderWidth: 1
+    }]
+  };
     //config
 
     const config = {
         type: 'bar',
-        data,
+        data: datatmp,
         options: {
           scales: {
             y: {
@@ -69,7 +94,7 @@
 
     const config2 = {
         type: 'line',
-        data,
+        data: dataph,
         options: {
           scales: {
             y: {
@@ -86,7 +111,7 @@
 
     const config3 = {
         type: 'polarArea',
-        data,
+        data: databrightness,
         options: {
           scales: {
             y: {
@@ -101,8 +126,8 @@
     );
 
     const config4 = {
-        type: 'bubble',
-        data,
+        type: 'line',
+        data: datahumidity,
         options: {
           scales: {
             y: {

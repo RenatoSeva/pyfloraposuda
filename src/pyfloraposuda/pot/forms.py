@@ -11,12 +11,15 @@ class EditPotForm(forms.ModelForm):
     """
     class Meta:
         model = Pot
-        fields = {'name', 'plant'}
+        fields = {'name', 'plant', 'indoor'}
         widgets = {
             'name': forms.TextInput(attrs={
                 'class': INPUT_CLASSES
             }),
             'plant': forms.Select(attrs={
+                'class': INPUT_CLASSES
+            }),
+            'indoor': forms.CheckboxInput(attrs={
                 'class': INPUT_CLASSES
             }),
 
@@ -30,12 +33,15 @@ class NewPotForm(forms.ModelForm):
     """
     class Meta:
         model = Pot
-        fields = {'name', 'plant'}
+        fields = {'name', 'plant', 'indoor'}
         widgets = {
             'name': forms.TextInput(attrs={
                 'class': INPUT_CLASSES
             }),
             'plant': forms.Select(attrs={
+                'class': INPUT_CLASSES
+            }),
+            'indoor': forms.CheckboxInput(attrs={
                 'class': INPUT_CLASSES
             }),
         }

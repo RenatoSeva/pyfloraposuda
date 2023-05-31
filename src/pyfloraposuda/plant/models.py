@@ -11,7 +11,7 @@ class Plant(models.Model):
         str: vraca ime biljke
     """
     name = models.CharField(max_length=255)
-    image = models.ImageField(upload_to='plant_images', blank=True, null=True)
+    image = models.ImageField(upload_to='plant_images')
     humidity = models.CharField(max_length=255)
     brightness = models.CharField(max_length=255)
     temperature = models.CharField(max_length=255)

@@ -40,6 +40,7 @@ class Pot(models.Model):
     senzorPh = models.ForeignKey(Senzors, related_name='potsSenzorPh', on_delete=models.PROTECT)
     senzorBrightness = models.ForeignKey(Senzors, related_name='potsSenzorBrightness', on_delete=models.PROTECT)
     senzorHumidity = models.ForeignKey(Senzors, related_name='potsSenzorHumidity', on_delete=models.PROTECT)
+    indoor = models.BooleanField(default=True)
     status = models.CharField(max_length=255)
     
     def __str__(self):

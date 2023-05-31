@@ -3,9 +3,9 @@
 {% block title %}Biljke{% endblock %}
 
 {% block content %}
-    <div class="pb-6 grid grid-cols-4 gap-4 bg-gray-100">
+    <div class="pb-6 grid grid-cols-4 gap-4 ">
         <div class="col-span-3">
-            <div class="grid grid-cols-3 gap-3">
+            <div class="grid grid-cols-5 gap-4 ">
                 {% for plant in plants %}
                     <div>
                         <a href="{% url 'plant:detail' plant.id %}">
@@ -15,12 +15,12 @@
                                 </div>
                             </column>
                             <column>
-                                <div class="p-6 bg-white rounded-b-xl">
-                                    <h2 class="text-2xl">Ime: {{ plant.name }}</h2>
-                                    <p class="text-2xl">Vlažnost tla: {{ plant.humidity }}</p>
-                                    <p class="text-2xl">Svjetlina: {{ plant.brightness }}</p>
-                                    <p class="text-2xl">Temperatura: {{ plant.temperature }}</p>
-                                    <p class="text-2xl">Gnojivo: {{ plant.substrate }}</p>
+                                <div class="p-6 bg-gray-100 rounded-b-xl ">
+                                    <h2 class="text-2xl"><strong>Ime: </strong>{{ plant.name }}</h2>
+                                    <p class="text-2xl"><strong>Vlažnost tla: </strong>{{ plant.humidity }}</p>
+                                    <p class="text-2xl"><strong>Svjetlina: </strong>{{ plant.brightness }}</p>
+                                    <p class="text-2xl"><strong>Temperatura: </strong>{{ plant.temperature }}</p>
+                                    <p class="text-2xl"><strong>Gnojivo: </strong>{{ plant.substrate }}</p>
                                 </div>
                             </column>
                         </a>
