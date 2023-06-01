@@ -2,8 +2,8 @@ import json
 from datetime import datetime
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect
-from .forms import SingupForm, MyprofileForm, ChangePasswordForm
+from django.contrib.auth.views import PasswordChangeView
+from .forms import SingupForm, MyprofileForm, ChangingPasswordForm
 from .scripts.sync import sync as sy
 from pot.models import Pot, SenzorValues, Senzors
 from plant.models import Plant
@@ -16,9 +16,15 @@ def index(request):
         'plants': plants,
     })
 
+@login_required
+def sync(request):
+    pots = Pot.objects.filter(user=request.user, plant__isnull=False)
+    for pot in pots:
+        data = sy(pot.indoor)
+        save_data(pot,data)
+    return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
 
-
-def save_data(pot, data):
+def save_data(pot: Pot, data):
     dict_json = json.loads(data)
     senzor_value = SenzorValues()
     senzor_value.senzor = pot.senzorTmp
@@ -57,6 +63,12 @@ def save_data(pot, data):
     senzor3.currentValue = dict_json["ph"]
     senzor3.save()
 
+    if dict_json["humidity"] < 100:
+        pot.status = "Dodati vode"
+    else:
+        pot.status = "OK"
+    pot.save()
+
 
 def signup(request):
     if request.method == 'POST':
@@ -90,31 +102,6 @@ def myprofile(request):
         'form': form
     })
 
-@login_required
-def sync(request):
-    pots = Pot.objects.filter(user=request.user, plant__isnull=False)
-    for pot in pots:
-        data = sy(pot.indoor)
-        save_data(pot,data)
-    return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
+class PasswordsChangeView(PasswordChangeView):
+    from_class = ChangingPasswordForm
 
-# @login_required
-# def changepassword(request,*args, **kwargs):
-#     if request.method == 'POST':
-#         form = ChangePasswordForm(request.POST, instance=request.user)
-#         if form.is_valid():
-#             form.save()
-
-#             return redirect('/mojprofil/')
-#     else:
-#         form = ChangePasswordForm(instance=request.user)
-#     return render(request, 'core/changepassword.html',{
-#         'form': form
-#     })
-
-def changepassword(self, request):
-    instance_user = get_object_or_404(User, id=int(user_id))
-    form_edit_password = ChangePasswordForm(instance_user)
-    context={'form_edit_password': form_edit_password}
-
-    return render(request, self.template_name, context)

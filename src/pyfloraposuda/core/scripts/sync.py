@@ -1,5 +1,8 @@
 import random
 import json
+import requests
+
+
 
 def sync(indoor: bool):
     tmp = get_tmp(indoor)
@@ -17,8 +20,17 @@ def sync(indoor: bool):
     return json_object
 
 def get_tmp(indoor):
+
     if indoor:
         return round(random.uniform(18.0,25.0),2)
+    else:
+        url_tmp = "https://goweather.herokuapp.com/weather/zagreb"
+        tmp = requests.get(url = url_tmp)
+        data = tmp.json()
+        if data is not None:
+            tmp = data["temperature"]
+            splitdata = tmp.split(" ")
+            return splitdata[0]
     return round(random.uniform(-10.0,40.0),2)
 
 def get_ph():
