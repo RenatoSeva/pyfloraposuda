@@ -1,5 +1,6 @@
 import json
 from datetime import datetime
+from django.http import HttpRequest, HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import PasswordChangeView
@@ -9,7 +10,15 @@ from pot.models import Pot, SenzorValues, Senzors
 from plant.models import Plant
 # Create your views here.
 
-def index(request):
+def index(request: HttpRequest) -> HttpResponse:
+    """Prva web stranica
+
+    Args:
+        request (HttpRequest): http zahtjev s parametrima za ispis index.html
+
+    Returns:
+        render: index.html
+    """
     plants = Plant.objects.all()
 
     return render(request, 'core/index.html',{
@@ -17,14 +26,28 @@ def index(request):
     })
 
 @login_required
-def sync(request):
+def sync(request: HttpRequest) -> HttpResponse:
+    """Sync podataka
+
+    Args:
+        request (HttpRequest): http zahtjev s parametrima za sync podataka
+
+    Returns:
+        redirect: web stranicu gdje se trenutno nalazi korisnik
+    """
     pots = Pot.objects.filter(user=request.user, plant__isnull=False)
     for pot in pots:
         data = sy(pot.indoor)
         save_data(pot,data)
     return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
 
-def save_data(pot: Pot, data):
+def save_data(pot: Pot, data: json):
+    """spremanje podataka nakon synca
+
+    Args:
+        pot (Pot): posuda za koju se trenutno syncaju podatci
+        data (json): podatci sa senzora za posudu
+    """
     dict_json = json.loads(data)
     senzor_value = SenzorValues()
     senzor_value.senzor = pot.senzorTmp
@@ -70,7 +93,15 @@ def save_data(pot: Pot, data):
     pot.save()
 
 
-def signup(request):
+def signup(request: HttpRequest) -> HttpResponse:
+    """Kreiranje novog usera
+
+    Args:
+        request (HttpRequest): http zahtjev s parametrima za kreiranje novog korisnika
+
+    Returns:
+        render: signup.html
+    """
     if request.method == 'POST':
         form = SingupForm(request.POST)
 
@@ -88,7 +119,15 @@ def signup(request):
     })
 
 @login_required
-def myprofile(request):
+def myprofile(request: HttpRequest) -> HttpResponse:
+    """Moj profil za uređivanje korisničkih podataka korisnika koji je trenutno ulogiran
+
+    Args:
+        request (HttpRequest): http zahtjev s parametrima za ispis Moj profil
+
+    Returns:
+        render: myprofile.html
+    """
     if request.method == 'POST':
         form = MyprofileForm(request.POST, instance=request.user)
 
@@ -103,5 +142,10 @@ def myprofile(request):
     })
 
 class PasswordsChangeView(PasswordChangeView):
+    """Izmjena lozinke
+
+    Args:
+        PasswordChangeView (class): View za izmjenu lozinke
+    """
     from_class = ChangingPasswordForm
 

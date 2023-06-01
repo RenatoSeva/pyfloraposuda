@@ -5,6 +5,11 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, Pass
 from django.contrib.auth.models import User
 
 class LoginForm(AuthenticationForm):
+    """Login forma
+
+    Args:
+        AuthenticationForm (django base class): Base class for authentication
+    """
     class Meta:
         model = User
         fields = ('username', 'password')
@@ -25,6 +30,11 @@ class LoginForm(AuthenticationForm):
 
 
 class SingupForm(UserCreationForm):
+    """Signup forma
+
+    Args:
+        UserCreationForm (django base class): Base class for user creation
+    """
     class Meta:
         model = User
         fields = ('username', 'email', 'password1', 'password2')
@@ -51,6 +61,11 @@ class SingupForm(UserCreationForm):
 
 
 class MyprofileForm(forms.ModelForm):
+    """Forma za uređivanje profila
+
+    Args:
+        forms (django base model form): base model class
+    """
     class Meta:
         model = User
         fields = ('first_name', 'last_name', 'username', 'email')
@@ -82,6 +97,11 @@ class MyprofileForm(forms.ModelForm):
     }))
 
 class ChangingPasswordForm(PasswordChangeForm):
+    """Forma za izmjenu passworda
+
+    Args:
+        PasswordChangeForm (django base class): form that lets a user change their password
+    """
     class Meta:
         model = User
         fields = ('old_password', 'new_password1', 'new_password2')

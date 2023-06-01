@@ -1,13 +1,14 @@
 from django.shortcuts import render
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
+from requests import Response
 
 from .models import Plant
 from .forms import EditPlantForm, NewPlantForm
 
 # Create your views here.
 
-def plants(request):
+def plants(request: Response) -> render:
     """funkcija za prikazivanje biljaka koje je kreirao user
 
     Args:
@@ -22,7 +23,7 @@ def plants(request):
         'plants': plants,
     })
 
-def detail(request, pk):
+def detail(request: Response, pk) -> render:
     """funkcija za ispisivanje detalja biljke
 
     Args:
@@ -55,7 +56,7 @@ def delete(pk):
 
 
 @login_required
-def edit(request, pk):
+def edit(request: Response, pk) -> render:
     """Funkcija za uređivanje biljaka
 
     Args:
@@ -84,7 +85,7 @@ def edit(request, pk):
     })
 
 @login_required
-def new(request):
+def new(request: Response) -> render:
     """funkcija za kreiranje nove posude
 
     Args:

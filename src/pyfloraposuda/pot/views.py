@@ -1,3 +1,4 @@
+from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
@@ -7,7 +8,7 @@ from .forms import NewPotForm, EditPotForm
 
 # Create your views here.
 
-def pots(request):
+def pots(request: HttpRequest) -> HttpResponse:
     """funkcija za prikazivanje posuda koje je kreirao user
 
     Args:
@@ -25,7 +26,7 @@ def pots(request):
 
 
 @login_required
-def new(request):
+def new(request:HttpRequest) -> HttpResponse:
     """funkcija za kreiranje nove posude
 
     Args:
@@ -72,7 +73,7 @@ def new(request):
         'command': 'Spremi',
     })
 
-def detail(request, pk):
+def detail(request: HttpRequest, pk: int) -> HttpResponse:
     """funkcija za ispisivanje detalja posude
 
     Args:
@@ -98,7 +99,7 @@ def detail(request, pk):
     })
 
 @login_required
-def delete(pk):
+def delete(pk: int) -> HttpResponse:
     """funkcija za brisanje posude iz tablice Pot
 
     Args:
@@ -114,7 +115,7 @@ def delete(pk):
 
 
 @login_required
-def edit(request, pk):
+def edit(request:HttpRequest, pk: int) -> HttpResponse:
     """Funkcija za uređivanje posuda
 
     Args:
