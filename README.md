@@ -47,7 +47,7 @@ Na gumb **Obriši** brišemo biljku iz aplikacije.
 
 Na gumb **Posuda** otvara se popis posuda koje je korisnik unio u aplikaciju.
 
-### Podatci o posude koji se čuvaju u bazi podataka
+### Podatci o posudi koji se čuvaju u bazi podataka
 
     id: INT
     name: VARCHAR
@@ -59,3 +59,29 @@ Na gumb **Posuda** otvara se popis posuda koje je korisnik unio u aplikaciju.
     senzor_Ph_id: BIGINT (FK na tablicu pot_senzors)
     senzor_Tmp_id: BIGINT (FK na tablicu pot_senzors)
     indoor: BOOL
+
+### Tablica pot_senzor popis polja
+
+    id: INTEGER
+    type: VARCHAR
+    date: DATETIME
+    currentValue: REAL
+
+podatci se popunjavaju prilikom kreiranja nove posude
+Kreiraju se 4 senzora po posudi. Senzor temperature, Sezor Ph, Senzor osvjetljenja, Senzor vlažnosti.
+Stupac u tablici currentValue sadrži zadnje očitane vrijednosti sa senzora.
+i novo kreirani se spramju u tablicu posude
+
+### Tablia pot_senzor_values polja
+
+    id: INT
+    value: REAL
+    senzor_id: BIGINT
+    date: DATETIME
+
+tablica sadrži povjest očitanih vrijednosti sa senzora.
+
+Popis posuda sadrži ime posude i status posude. Na gumb **Nova posuda** otvara se ekran za kreiranje nove posude.
+
+Potrebno je odabrati predhodno kreiranu biljku, odabrati poziciju biljke(ako je izvan stana/kuće odznačiti Indoor, ako je u stanu/kući selektirati kućicu), te je potrebno dodati opisno ime(koja je pozicija posude).
+
