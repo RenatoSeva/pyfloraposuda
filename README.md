@@ -25,3 +25,12 @@ Kada se korisnik prijavi prikazuje se popis biljaka. Korisnik može kreirati nov
 
 ![Screenshot 2023-06-04 111535](https://github.com/RenatoSeva/pyfloraposuda/assets/78822975/2cc8770a-d8e8-4fea-bbe1-251c9c1f00d4)
 
+Klikom na biljk,u s popisa otvaraju se detalji biljke gdje korisnik može ažurirati podatke o biljci te ju obrisati.
+
+Ekran s podatcima biljke sadrži sliku biljke i ime bilje. Te prikazuje veše opise o biljci, vlažnost tla(opis koliko je potrebno zaljevanje biljke), svjetlina(koliko dnevnog svjetla je poželjno da biljka ima), idealna temperatura i dali je potrebno dodavati gnojivo/supstrat.
+
+Pritiskom na gumb Ažurirj otvara se egran s detaljima biljke koje je potrebno ažurirati. Sva polja za unos su obavezna.
+
+Na gumb obriši brišemo biljku iz aplikacije.
+
+
