@@ -15,7 +15,8 @@ Pocetna stranica aplikacije(index.html) sadrži popis biljaka unesenih u sustav.
 
 Ako korisnik nije prijavljen u headeru aplikacije se nalaze gumbi  login(Prijava korisnika u aplikaciju), Sign up (Kreiranje novog korisnika) i PyFloraPosuda gumb preusmjerava na početnu stranicu(index.html).
 
-image.png
 
 
+
+![Screenshot 2023-06-04 110528](https://github.com/RenatoSeva/pyfloraposuda/assets/78822975/a6b593a4-2c7a-4c60-b2cc-254808de0eb6)
 
