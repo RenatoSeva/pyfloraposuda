@@ -26,8 +26,8 @@ def get_tmp(indoor):
     else:
         url_tmp = "https://goweather.herokuapp.com/weather/zagreb"
         tmp = requests.get(url = url_tmp)
-        data = tmp.json()
-        if data is not None:
+        if tmp is not None:
+            data = tmp.json()
             tmp = data["temperature"]
             splitdata = tmp.split(" ")
             return splitdata[0]
