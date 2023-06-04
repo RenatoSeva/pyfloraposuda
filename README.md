@@ -1,7 +1,7 @@
 # PyfloraPosuda
 
 Alplikacije se moze buildti untar docker containera:
-    'docker build -t pyfloraposuda:latest .
+    -docker build -t pyfloraposuda:latest .
     -docker run -p 8000:8000 pyfloraposuda:latest
 
 Ako se aplikacija builda s docker naredbom -p 8000:8000, aplikacija se nalazi na linku localhost:8000
