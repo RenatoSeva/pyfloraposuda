@@ -107,3 +107,6 @@ Gumb **Moj Proifl** nam omogućuje izmjene podataka o trenutno prijavljenom kori
 Moguće izmjene su Ime, Prezime, Krisnicko ime i email.
 
 Na gumb **Promjena lozinke** moguća je izmjena lozinke trenutno prijavljenom korisiniku.
+
+![Screenshot 2023-06-04 144440](https://github.com/RenatoSeva/pyfloraposuda/assets/78822975/af35f5c7-6939-4007-ac80-b2e5f2eadc3a)
+
