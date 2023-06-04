@@ -34,3 +34,4 @@ Pritiskom na gumb Ažurirj otvara se egran s detaljima biljke koje je potrebno a
 Na gumb obriši brišemo biljku iz aplikacije.
 
 
+![Screenshot 2023-06-04 112529](https://github.com/RenatoSeva/pyfloraposuda/assets/78822975/4e60a7d7-32ae-4ae9-99ee-ae087cf1e2d3)
