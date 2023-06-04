@@ -1,6 +1,6 @@
 # PyfloraPosuda
 
-Alplikacije se moze buildti untar docker containera:
+Aplikacija se moze buildati untar docker containera:
 
     -docker build -t pyfloraposuda:latest .
     -docker run -p 8000:8000 pyfloraposuda:latest
@@ -14,7 +14,7 @@ User za ulazak u aplikaciju je:
 
 ## Pocetna stranica aplikacije(index.html) sadrži popis biljaka unesenih u sustav.
 
-Ako korisnik nije prijavljen u headeru aplikacije se nalaze gumbi  **login**(Prijava korisnika u aplikaciju), **Sign up** (Kreiranje novog korisnika) i **PyFloraPosuda** gumb preusmjerava na početnu stranicu(index.html).
+Ako korisnik nije prijavljen u headeru aplikacije se nalaze gumbi  **Login**(Prijava korisnika u aplikaciju), **Sign up** (Kreiranje novog korisnika) i **PyFloraPosuda** gumb koji preusmjerava na početnu stranicu(index.html).
 
 
 
@@ -41,7 +41,7 @@ Ekran s podatcima biljke sadrži sliku biljke i ime biljke. Te prikazuje više o
 
 Pritiskom na gumb **Ažuriraj** otvara se ekran s detaljima biljke koji se mogu ažurirati. Sva polja za unos su obavezna.
 
-Na gumb **Obriši** brišemo biljku iz aplikacije.
+Na gumb **Obriši** brišemo biljku iz aplikacije. Ako je biljka posađena u posudu, brisanje iste nije moguće.
 
 ![Screenshot 2023-06-04 112529](https://github.com/RenatoSeva/pyfloraposuda/assets/78822975/4e60a7d7-32ae-4ae9-99ee-ae087cf1e2d3)
 
@@ -67,46 +67,43 @@ Na gumb **Posuda** otvara se popis posuda koje je korisnik unio u aplikaciju.
     date: DATETIME
     currentValue: REAL
 
-podatci se popunjavaju prilikom kreiranja nove posude
-Kreiraju se 4 senzora po posudi. Senzor temperature, Sezor Ph, Senzor osvjetljenja, Senzor vlažnosti.
+Podatci se u tablicu pot_senzor popunjavaju prilikom kreiranja nove posude.
+Kreiraju se 4 senzora po posudi: Senzor temperature, Sezor Ph, Senzor osvjetljenja, Senzor vlažnosti.
 Stupac u tablici currentValue sadrži zadnje očitane vrijednosti sa senzora.
-i novo kreirani se spramju u tablicu posude
 
-
-### Tablia pot_senzor_values polja
+### Tablia pot_senzorvalues polja
 
     id: INT
     value: REAL
     senzor_id: BIGINT
     date: DATETIME
 
-tablica sadrži povjest očitanih vrijednosti sa senzora.
+Tablica pot_senzorvalues sadrži povijest očitanih vrijednosti sa senzora.
 
 Popis posuda sadrži ime posude i status posude. Na gumb **Nova posuda** otvara se ekran za kreiranje nove posude.
 
-Potrebno je odabrati predhodno kreiranu biljku, odabrati poziciju biljke(ako je izvan stana/kuće odznačiti Indoor, ako je u stanu/kući selektirati kućicu), te je potrebno dodati opisno ime(koja je pozicija posude).
+Potrebno je odabrati predhodno kreiranu biljku, odabrati poziciju biljke(ako je izvan stana/kuće odznačiti Indoor, ako je u stanu/kući označiti kućicu), te je potrebno dodati opisno ime(koja je pozicija posude).
 
 ![Screenshot 2023-06-04 143051](https://github.com/RenatoSeva/pyfloraposuda/assets/78822975/0ee99530-65dc-4c56-b054-c45c1e99a8ef)
 
-Ako odaberemo odaberemo posudu s popisa otvara nam se ekran s detaljnim opisom posude.
+Ako odaberemo posudu s popisa otvara nam se ekran s detaljnim opisom posude.
 
 Na ekranu možemo ažurirati podatke o posudi i obrisati posudu.
 
-Na gumb **Ažuriraj** otvara nam se ekran za ažuriranje podataka o posudi gdje možemo izmjeniti biljku koja se nalazi trenutno u njoj, možemo i maknuti biljku iz posude tada posuda postaje prazna, poziciju biljke i ime posude.
+Na gumb **Ažuriraj** otvara nam se ekran za ažuriranje podataka o posudi gdje možemo izmjeniti biljku koja se nalazi trenutno u njoj, možemo i maknuti biljku iz posude tada posuda postaje prazna, promjeniti poziciju biljke i ime posude.
 
 Na gumb **Obriši** brišemo posudu iz sustava.
 
-Na ekranu **Posude** se još nalaze i grafofi svaki graf označava povjest bilježenja sa senzora.
+Na ekranu s detaljima **Posude** se još nalaze i grafovi. Svaki graf označava povijest bilježenja sa senzora.
 
 ![Screenshot 2023-06-04 143909](https://github.com/RenatoSeva/pyfloraposuda/assets/78822975/c24ed00c-6ab6-42bb-ad93-29a138ad92fa)
 
 Na gumb **SYNC** Osvježavaju se podatci o posudi.
 
-Gumb **Moj Proifl** nam omogućuje izmjene podataka o trenutno prijavljenom korisniku.
+Gumb **Moj Profil** nam omogućuje izmjene podataka o trenutno prijavljenom korisniku.
 
 Moguće izmjene su Ime, Prezime, Krisnicko ime i email.
 
-Na gumb **Promjena lozinke** moguća je izmjena lozinke trenutno prijavljenom korisiniku.
+Na gumb **Promjena lozinke** moguća je izmjena lozinke trenutno prijavljenom korisniku.
 
 ![Screenshot 2023-06-04 144440](https://github.com/RenatoSeva/pyfloraposuda/assets/78822975/af35f5c7-6939-4007-ac80-b2e5f2eadc3a)
-
