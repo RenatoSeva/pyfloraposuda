@@ -1,17 +1,21 @@
 # PyfloraPosuda
 
-docker build -t pyfloraposuda:latest .
+Alplikacije se moze buildti untar docker containera:
+    'docker build -t pyfloraposuda:latest .
+    -docker run -p 8000:8000 pyfloraposuda:latest
 
-docker run -p 8000:8000 pyfloraposuda:latest
+Ako se aplikacija builda s docker naredbom -p 8000:8000, aplikacija se nalazi na linku localhost:8000
 
-user za ulazak u aplikaciju je:
+User za ulazak u aplikaciju je:
 
-username: admin
+    -username: admin
+    -password: Y8.B-u5RzWLM9fd
 
-password: Y8.B-u5RzWLM9fd
+Pocetna stranica aplikacije(index.html) sadrži popis biljaka unesenih u sustav.
 
-aplikacija se nalazi na localhost:8000
+Ako korisnik nije prijavljen u headeru aplikacije se nalaze gumbi  login(Prijava korisnika u aplikaciju), Sign up (Kreiranje novog korisnika) i PyFloraPosuda gumb preusmjerava na početnu stranicu(index.html).
 
-na linku /biljke ili gumb PyfloraPosuda se nalazi popis biljaka.
+image.png
 
-nedostaju mi posude i dodavanje isthi i citanje sa senzora.
+
+

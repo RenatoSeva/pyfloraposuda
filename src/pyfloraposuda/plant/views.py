@@ -1,3 +1,4 @@
+from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
@@ -8,7 +9,7 @@ from .forms import EditPlantForm, NewPlantForm
 
 # Create your views here.
 
-def plants(request: Response) -> render:
+def plants(request: HttpRequest) -> HttpResponse:
     """funkcija za prikazivanje biljaka koje je kreirao user
 
     Args:
@@ -23,7 +24,7 @@ def plants(request: Response) -> render:
         'plants': plants,
     })
 
-def detail(request: Response, pk) -> render:
+def detail(request: HttpRequest, pk: int) -> HttpResponse:
     """funkcija za ispisivanje detalja biljke
 
     Args:
@@ -40,7 +41,7 @@ def detail(request: Response, pk) -> render:
     })
 
 @login_required
-def delete(pk):
+def delete(request: HttpRequest, pk: int)-> HttpResponse:
     """funkcija za brisanje biljke iz tablice Plants
 
     Args:
@@ -56,7 +57,7 @@ def delete(pk):
 
 
 @login_required
-def edit(request: Response, pk) -> render:
+def edit(request: HttpRequest, pk: int) -> HttpResponse:
     """Funkcija za uređivanje biljaka
 
     Args:
@@ -85,7 +86,7 @@ def edit(request: Response, pk) -> render:
     })
 
 @login_required
-def new(request: Response) -> render:
+def new(request: HttpRequest) -> HttpResponse:
     """funkcija za kreiranje nove posude
 
     Args:

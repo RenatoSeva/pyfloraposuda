@@ -99,7 +99,7 @@ def detail(request: HttpRequest, pk: int) -> HttpResponse:
     })
 
 @login_required
-def delete(pk: int) -> HttpResponse:
+def delete(request: HttpRequest, pk: int) -> HttpResponse:
     """funkcija za brisanje posude iz tablice Pot
 
     Args:
