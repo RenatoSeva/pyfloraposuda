@@ -100,4 +100,10 @@ Na ekranu **Posude** se još nalaze i grafofi svaki graf označava povjest bilje
 
 ![Screenshot 2023-06-04 143909](https://github.com/RenatoSeva/pyfloraposuda/assets/78822975/c24ed00c-6ab6-42bb-ad93-29a138ad92fa)
 
+Na gumb **SYNC** Osvježavaju se podatci o posudi.
 
+Gumb **Moj Proifl** nam omogućuje izmjene podataka o trenutno prijavljenom korisniku.
+
+Moguće izmjene su Ime, Prezime, Krisnicko ime i email.
+
+Na gumb **Promjena lozinke** moguća je izmjena lozinke trenutno prijavljenom korisiniku.
