@@ -46,3 +46,16 @@ Na gumb **Obriši** brišemo biljku iz aplikacije.
 ![Screenshot 2023-06-04 112529](https://github.com/RenatoSeva/pyfloraposuda/assets/78822975/4e60a7d7-32ae-4ae9-99ee-ae087cf1e2d3)
 
 Na gumb **Posuda** otvara se popis posuda koje je korisnik unio u aplikaciju.
+
+### Podatci o posude koji se čuvaju u bazi podataka
+
+    id: INT
+    name: VARCHAR
+    plant_id: BIGINT(FK na tablicu plant_plant)
+    user_id: BIGINT(FK na tablcu auth_user)
+    status: VARCHAR
+    senzor_Brightness_id: BIGINT(FK na tablicu pot_senzors)
+    senzor_Humidity_id: BIGINT(FK na tablicu pot_senzors)
+    senzor_Ph_id: BIGINT (FK na tablicu pot_senzors)
+    senzor_Tmp_id: BIGINT (FK na tablicu pot_senzors)
+    indoor: BOOL
