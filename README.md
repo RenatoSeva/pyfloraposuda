@@ -21,3 +21,4 @@ Ako korisnik nije prijavljen u headeru aplikacije se nalaze gumbi  login(Prijava
 
 ![Screenshot 2023-06-04 110528](https://github.com/RenatoSeva/pyfloraposuda/assets/78822975/a6b593a4-2c7a-4c60-b2cc-254808de0eb6)
 
+Kada se korisnik prijavi prikazuje se popis biljaka. Korisnik može kreirati novu biljku pritiskom na gum Nova biljka
