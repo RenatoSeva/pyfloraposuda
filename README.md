@@ -72,6 +72,7 @@ Kreiraju se 4 senzora po posudi. Senzor temperature, Sezor Ph, Senzor osvjetljen
 Stupac u tablici currentValue sadrži zadnje očitane vrijednosti sa senzora.
 i novo kreirani se spramju u tablicu posude
 
+
 ### Tablia pot_senzor_values polja
 
     id: INT
@@ -84,6 +85,8 @@ tablica sadrži povjest očitanih vrijednosti sa senzora.
 Popis posuda sadrži ime posude i status posude. Na gumb **Nova posuda** otvara se ekran za kreiranje nove posude.
 
 Potrebno je odabrati predhodno kreiranu biljku, odabrati poziciju biljke(ako je izvan stana/kuće odznačiti Indoor, ako je u stanu/kući selektirati kućicu), te je potrebno dodati opisno ime(koja je pozicija posude).
+
+![Screenshot 2023-06-04 143051](https://github.com/RenatoSeva/pyfloraposuda/assets/78822975/0ee99530-65dc-4c56-b054-c45c1e99a8ef)
 
 Ako odaberemo odaberemo posudu s popisa otvara nam se ekran s detaljnim opisom posude.
 
