@@ -1,6 +1,7 @@
 # PyfloraPosuda
 
 Alplikacije se moze buildti untar docker containera:
+
     -docker build -t pyfloraposuda:latest .
     -docker run -p 8000:8000 pyfloraposuda:latest
 
