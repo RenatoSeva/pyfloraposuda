@@ -85,3 +85,12 @@ Popis posuda sadrži ime posude i status posude. Na gumb **Nova posuda** otvara 
 
 Potrebno je odabrati predhodno kreiranu biljku, odabrati poziciju biljke(ako je izvan stana/kuće odznačiti Indoor, ako je u stanu/kući selektirati kućicu), te je potrebno dodati opisno ime(koja je pozicija posude).
 
+Ako odaberemo odaberemo posudu s popisa otvara nam se ekran s detaljnim opisom posude.
+
+Na ekranu možemo ažurirati podatke o posudi i obrisati posudu.
+
+Na gumb **Ažuriraj** otvara nam se ekran za ažuriranje podataka o posudi gdje možemo izmjeniti biljku koja se nalazi trenutno u njoj, možemo i maknuti biljku iz posude tada posuda postaje prazna, poziciju biljke i ime posude.
+
+Na gumb **Obriši** brišemo posudu iz sustava.
+
+Na ekranu **Posude** se još nalaze i grafofi svaki graf označava povjest bilježenja sa senzora.
