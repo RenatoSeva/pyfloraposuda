@@ -97,3 +97,7 @@ Na gumb **Ažuriraj** otvara nam se ekran za ažuriranje podataka o posudi gdje 
 Na gumb **Obriši** brišemo posudu iz sustava.
 
 Na ekranu **Posude** se još nalaze i grafofi svaki graf označava povjest bilježenja sa senzora.
+
+![Screenshot 2023-06-04 143909](https://github.com/RenatoSeva/pyfloraposuda/assets/78822975/c24ed00c-6ab6-42bb-ad93-29a138ad92fa)
+
+
